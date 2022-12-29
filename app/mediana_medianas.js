@@ -1,22 +1,25 @@
+const eixo_x = (a, b) => a.posicao[0] - b.posicao[0];
+
 function medianaDasMedianas(vetor) {
-  if(vetor.length == 1) {
-    return vetor[0];
-  }
-  if(vetor.length < 3) {
-    return vetor[1];
-  }
+
   if(vetor.length<=5) {
+    vetor.sort(eixo_x)
+    if(vetor.length == 1) {
+      return vetor[0];
+    }
+    if(vetor.length <= 3) {
+      return vetor[1];
+    }
     return vetor[2];
   }
-  let vetor_medianas = [];
 
-  const v_sort_eixo_x = (v1, v2) => v1.posicao[0] - v2.posicao[0]
+  let vetor_medianas = [];
 
   for(let i=0; i<vetor.length; i+=5) {
     // Passo 1 Dividir o Vetor em grupos de 5
     let v = vetor.slice(i, i+5);
     // Passo 2 Achar a Mediana de Cada grupo
-    v.sort();
+    v.sort(eixo_x);
 
     if(v.length==5)
       v[0] = v[2];
@@ -26,20 +29,18 @@ function medianaDasMedianas(vetor) {
   }
   // Passo 3 Achar a Mediana das Medianas
   let m = medianaDasMedianas(vetor_medianas);
-
   // Passo 4 Dividir o Vetor Original em torno de m
-  let L = vetor_medianas.filter(v => v_sort_eixo_x(v, m) <= 0);
-  let R = vetor_medianas.filter(v => v_sort_eixo_x(v, m) > 0);
-
+  let L = vetor_medianas.filter(v => eixo_x(v, m) <= 0);
   // Passo 5
-  let k = Math.floor(vetor.length/2);
-  if(L.length == k-1) {
+  let k = Math.round(vetor.length/2);
+  if(L.length/k<=0.3 || L.length < 10) {
     return m;
   }
-  else if(L.length > k-1) {
+  else if(L.length/k <= 0.6) {
     return medianaDasMedianas(L);
   }
   else {
+    let R = vetor_medianas.filter(v => eixo_x(v, m) > 0);
     return medianaDasMedianas(R);
   }
 }

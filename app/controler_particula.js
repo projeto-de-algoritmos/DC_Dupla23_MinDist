@@ -4,15 +4,14 @@ let btn_remover = document.getElementById('rm_particula');
 let adicionar = document.getElementById('adicionar');
 let quantidade = document.getElementById('quantidade');
 
-adicionar.value = 1000;
+adicionar.value = 10;
 let particulas = [];
 
 btn_adicionar.addEventListener('click', () => {
   let novas_particulas = adicionar.value;
   while(novas_particulas--) {
-    let particula = new Particula(particulas.length, canvas.width, canvas.height,50);
+    let particula = new Particula(particulas.length, canvas.width, canvas.height);
     particulas.push(particula);
-    console.log(particula);
   }
   quantidade.innerHTML = particulas.length;
 });
