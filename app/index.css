@@ -1,0 +1,38 @@
+header {
+  text-align: center;
+}
+
+body {
+  height: 100%;
+}
+
+canvas {
+  height: 570px;
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.evenly {
+  justify-content: space-evenly;
+}
+
+.controle-particula {
+  padding: 15px;
+  border: 1px solid darkblue;
+  border-radius: 20px;
+}
+
+.novas-particulas {
+  padding: 5px;
+  height: 10vh;
+}
