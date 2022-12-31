@@ -3,5 +3,5 @@ function eixo_x (a, b){
 }
 
 function eixo_y (a, b) {
-  return particulas[a].posicao[EIXO_Y] - particulas[b].posicao[EIXO_Y];
+  return a.posicao[EIXO_Y] - b.posicao[EIXO_Y];
 }
