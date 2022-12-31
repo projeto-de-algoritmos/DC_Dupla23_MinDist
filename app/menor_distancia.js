@@ -17,11 +17,12 @@ function minimumBetweenThree(A, B, C) {
 }
 
 function closestPair(vetor) {
-  console.trace();
+  if (vetor.length === 1) return;
   if (vetor.length === 2) return { distance: calculateDistance(vetor[0], vetor[1]), positionsA: vetor[0], positionsB: vetor[1] }
   if (vetor.length === 3) return minimumBetweenThree(vetor[0], vetor[1], vetor[2]);
   
   let MoM = medianaDasMedianas(vetor);
+
   if (MoM && adicionar.value == vetor.length) MoM.destacar(draw);
 
   const l = vetor.filter((v) => v.posicao[0] <= MoM.posicao[0]);
