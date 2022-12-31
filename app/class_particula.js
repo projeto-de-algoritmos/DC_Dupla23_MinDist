@@ -1,51 +1,67 @@
-const aleatorio = (raio, inicio=0) => inicio+Math.round(Math.random()*(raio-inicio));
+function aleatorio (raio, inicio=0) {
+  return inicio+Math.round(Math.random()*(raio-inicio));
+}
+
+const EIXO_X = 0, EIXO_Y = 1;
 
 class Particula {
-  constructor(index, largura, altura, tamanho=false, cor=false) {
+  constructor(index, largura, altura, raio=false, cor=false) {
     this.index = index;
-    this.tamanho = tamanho?tamanho:aleatorio(20, 100);
+    this.raio = raio?raio:aleatorio(50,10);
     this.posicao = [
-      aleatorio(largura-this.tamanho, this.tamanho),
-      aleatorio(altura-this.tamanho,this.tamanho)
+      aleatorio(largura-this.raio*2, this.raio*2),
+      aleatorio(altura-this.raio*2, this.raio*2)
     ];
-    this.velocidade = [(Math.random() * 10), (Math.random() * 10)];
-    this.cor = cor?cor:[aleatorio(255), aleatorio(255), aleatorio(255)];
+    this.velocidade = [aleatorio(10), aleatorio(10)];
+    this.cor = cor?cor:[aleatorio(255, 128), aleatorio(255, 128), aleatorio(255, 128)];
   }
 
-  desenhar(draw) {
-    let raio = this.tamanho/2;
-    let x = this.posicao[0]+raio;
-    let y = this.posicao[1]+raio;
+  distanciaEuclidiana(other) {
+    let x = this.posicao[EIXO_X] - other.posicao[EIXO_X];
+    let y = this.posicao[EIXO_Y] - other.posicao[EIXO_Y];
+    return Math.sqrt(x*x+y*y);
+  }
+
+  colide(other, distancia) {
+    if(this.raio+other.raio < distancia)
+      return false;
+
+    this.velocidade[EIXO_X] *= -1;
+    this.velocidade[EIXO_Y] *= -1;
+    this.mover()
+    return true;
+  }
+
+  desenhar() {
+    let x = this.posicao[EIXO_X]+this.raio;
+    let y = this.posicao[EIXO_Y]+this.raio;
     let rgb = `rgb(${this.cor[0]}, ${this.cor[1]}, ${this.cor[2]})`;
     draw.fillStyle = rgb;
     draw.beginPath();
-    draw.arc(x, y, raio, 0, 2*Math.PI);
+    draw.arc(x, y, this.raio, 0, 2*Math.PI);
     draw.fill();
   }
 
-  destacar(draw) {
-    let raio = this.tamanho/2;
-    let x = this.posicao[0]+raio;
-    let y = this.posicao[1]+raio;
+  destacar() {
+    let x = this.posicao[EIXO_X]+this.raio;
+    let y = this.posicao[EIXO_Y]+this.raio;
+    draw.strokeStyle = '#FF8000';
+    draw.lineWidth = 15;
     draw.beginPath();
-    draw.fillStyle = 'red';
-    draw.fillRect(x, 0, 5, canvas.height);
-    draw.strokeStyle = 'red';
-    draw.lineWidth = 10;
-    draw.beginPath();
-    draw.arc(x, y, raio, 0, 2*Math.PI);
+    draw.arc(x, y, this.raio, 0, 2*Math.PI);
     draw.stroke();
   }
 
-  trocaDirecao(eixo_posicao, dimensao) {
-    if((this.posicao[eixo_posicao]+this.tamanho >= dimensao)
-    ||(this.posicao[eixo_posicao] <= 0)) {  this.velocidade[eixo_posicao]*=-1;
+  trocaDirecao(eixo, dimensao) {
+    if((this.posicao[eixo]+this.raio*2 >= dimensao)
+      ||(this.posicao[eixo] <= 0)) {
+      this.velocidade[eixo]*=-1;
     }
-    this.posicao[eixo_posicao] += this.velocidade[eixo_posicao];
+    this.posicao[eixo] += this.velocidade[eixo];
   }
 
-  mover(largura, altura) {
-    this.trocaDirecao(0, largura);
-    this.trocaDirecao(1, altura);
+  mover() {
+    this.trocaDirecao(EIXO_X, canvas.width);
+    this.trocaDirecao(EIXO_Y, canvas.height);
   }
 }
