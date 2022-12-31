@@ -1,16 +1,10 @@
-const eixo_x = (a, b) => a.posicao[0] - b.posicao[0];
-
 function medianaDasMedianas(vetor) {
-
   if(vetor.length<=5) {
     vetor.sort(eixo_x)
     if(vetor.length == 1) {
       return vetor[0];
     }
-    if(vetor.length <= 3) {
-      return vetor[1];
-    }
-    return vetor[2];
+    return vetor[1];
   }
 
   let vetor_medianas = [];
