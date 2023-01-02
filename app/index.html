@@ -11,25 +11,27 @@
     <header>
       <h1>Particulas Malucas</h1>
     </header>
-    <main class="flex evenly">
-      <div class="controle-particula">
-        <div>
+    <main class="conteudo">
+      <div class="controle_particula">
+        <div class="display_particulas">
           <span> Particulas no Mapa:</span>
           <span id="quantidade">0</span>
         </div>
-        <div class="novas-particulas flex evenly column">
+        <div class="novas_particulas">
           <label for="adicionar">Novas Particulas</label>
           <input id="adicionar" type="number" min="1" max="10000">
-          <button id="add_particula">Adicionar</button>
+          <button id="add_particula" class="botao">Adicionar</button>
         </div>
-        <div class="excluir-particula">
-          <button id="rm_particula">Remover Particulas</button>
+        <div class="excluir_particula">
+          <button id="rm_particula" class="botao">Remover Particulas</button>
         </div>
-        <div class="pause-particula">
-          <button id="pause_particula">Parar Particulas</button>
+        <div class="pausar_particula">
+          <button id="pause_particula" class="botao">Parar Particulas</button>
         </div>
       </div>
-      <canvas width="4096" height="2048"></canvas>
+      <div class="canvas">
+        <canvas width="4096" height="2048"></canvas>
+      </div>
     </main>
     <script src="document_import.js"></script>
     <script src="class_particula.js"></script>

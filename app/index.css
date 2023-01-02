@@ -2,38 +2,120 @@ header {
   text-align: center;
 }
 
-body {
+canvas {
+  padding: 8px;
+  border: 1px solid darkblue;
+  border-radius: 16px;
+}
+
+.conteudo {
+  display: flex;
+  justify-content: space-between;
   height: 100%;
 }
 
-canvas {
-  width: 90%;
+.controle_particula {
+  margin-bottom: auto;
+  padding: 8px;
   border: 1px solid darkblue;
-}
-
-.flex {
+  border-radius: 16px;
   display: flex;
-}
-
-.column {
   flex-direction: column;
-}
-
-.between {
   justify-content: space-between;
+  text-align: center;
 }
 
-.evenly {
-  justify-content: space-evenly;
+.display_particulas {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
 }
 
-.controle-particula {
-  padding: 15px;
-  border: 1px solid darkblue;
-  border-radius: 20px;
+#quantidade {
+  text-align: center;
+  font-size: larger;
+  font-weight: bolder;
 }
 
-.novas-particulas {
-  padding: 5px;
-  height: 10vh;
+.botao {
+  color: white;
+  border: 1px solid #F3F5FC;
+  border-radius: 16px;
+  height: 32px;
+  max-width: 343px;
+  cursor: pointer;
+}
+
+.novas_particulas {
+  padding: 10px 20px;
+}
+
+.novas_particulas input {
+  text-align: center;
+  font-size: larger;
+  font-weight: bolder;
+  border: 0px;
+  margin-bottom: 2px;
+  max-width: 343px;
+}
+
+.excluir_particula {
+  padding: 10px 20px;
+}
+
+.pausar_particula {
+  padding: 10px 20px;
+}
+
+#add_particula {
+  padding: 10px;
+  background-color: cornflowerblue;
+}
+#rm_particula {
+  background-color: crimson;
+}
+#pause_particula {
+  background-color: darkolivegreen;
+}
+
+@media (min-width: 0px) {
+  .conteudo {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .controle_particula {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .novas_particulas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .novas_particulas input {
+    width: 100%;
+  }
+  .botao {
+    width: 100%;
+  }
+  canvas {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 720px) {
+  .conteudo {
+    flex-direction: row;
+  }
+  .controle_particula {
+    margin: 0 0 0 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  canvas {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
