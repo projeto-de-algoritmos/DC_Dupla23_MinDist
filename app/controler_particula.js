@@ -48,12 +48,14 @@ function atualizarTela() {
   // });
 
   const d = closestPair(particulas);
-  draw.beginPath();
-  draw.moveTo(d.positionsA.posicao[0] + d.positionsA.raio, d.positionsA.posicao[1] + d.positionsA.raio)
-  draw.lineTo(d.positionsB.posicao[0] + d.positionsB.raio, d.positionsB.posicao[1] + d.positionsB.raio, 6);
-
-  draw.strokeStyle = '#000000';
-  draw.stroke()
+  if (d) {
+    draw.beginPath();
+    draw.moveTo(d.positionsA.posicao[0] + d.positionsA.raio, d.positionsA.posicao[1] + d.positionsA.raio)
+    draw.lineTo(d.positionsB.posicao[0] + d.positionsB.raio, d.positionsB.posicao[1] + d.positionsB.raio, 6);
+  
+    draw.strokeStyle = '#000000';
+    draw.stroke()
+  }
 }
 
 setInterval(atualizarTela, 1000/30);
