@@ -35,17 +35,11 @@ function closestPair(vetor) {
   if (dl.distance <= dr.distance) smallestDistance = dl;
   if (dl.distance > dr.distance) smallestDistance = dr;
 
-  console.log('===========');
-  console.log('vetor', vetor);
-  console.log('MoM', MoM);
-  console.log('smallestDistance', smallestDistance);
   const S = vetor.filter(v => 
     v.posicao[0] >= (MoM.posicao[0] - smallestDistance.distance) &&
     v.posicao[0] <= (MoM.posicao[0] + smallestDistance.distance)
   );
-  console.log('PRE-SORT S', S);
   S.sort(eixo_y);
-  console.log('POS-SORT S', S);
 
   for (let i = 0; i < S.length - 1; i++) {
     for (let j = i + 1; j < S.length; j++) {
