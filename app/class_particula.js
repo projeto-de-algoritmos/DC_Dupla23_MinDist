@@ -16,18 +16,52 @@ class Particula {
     this.cor = cor?cor:[aleatorio(255, 128), aleatorio(255, 128), aleatorio(255, 128)];
   }
 
+  get massa() {
+    return Math.PI*this.raio*this.raio;
+  }
+
+  get v() {
+    return [this.velocidade[EIXO_X], this.velocidade[EIXO_Y]];
+  }
+
   distanciaEuclidiana(other) {
     let x = this.posicao[EIXO_X] - other.posicao[EIXO_X];
     let y = this.posicao[EIXO_Y] - other.posicao[EIXO_Y];
-    return Math.sqrt(x*x+y*y);
+    let dist = Math.sqrt(x*x+y*y);
+    this.colide(other, dist);
+    return dist;
   }
 
   colide(other, distancia) {
     if(this.raio+other.raio < distancia)
       return false;
 
-    this.velocidade[EIXO_X] *= -1;
-    this.velocidade[EIXO_Y] *= -1;
+    function rotate(v, theta) {
+      return [
+        v[EIXO_X] * Math.cos(theta) - v[EIXO_Y] * Math.sin(theta),
+        v[EIXO_X] * Math.sin(theta) + v[EIXO_Y] * Math.cos(theta)];
+    }
+    let res = [
+      this.velocidade[EIXO_X] - other.velocidade[EIXO_X],
+      this.velocidade[EIXO_Y] - other.velocidade[EIXO_Y]
+    ];
+
+    if (res[EIXO_X] *(other.posicao[EIXO_X] - this.posicao[EIXO_X]) + res[EIXO_Y] * (other.posicao[EIXO_Y] - this.posicao[EIXO_Y]) >= EIXO_X ) {
+      this.color = [aleatorio(255, 128), aleatorio(255, 128), aleatorio(255, 128)];
+      other.color = [aleatorio(255, 128), aleatorio(255, 128), aleatorio(255, 128)];
+      var m1 = this.massa
+      var m2 = other.massa
+      var theta = -Math.atan2(other.posicao[EIXO_Y] - this.posicao[EIXO_Y], other.posicao[EIXO_X] - this.posicao[EIXO_X]);
+      var v1 = rotate(this.v, theta);
+      var v2 = rotate(other.v, theta);
+      var u1 = rotate([v1[EIXO_X] * (m1 - m2)/(m1 + m2) + v2[EIXO_X] * 2 * m2/(m1 + m2), v1[EIXO_Y]], -theta);
+      var u2 = rotate([v2[EIXO_X] * (m2 - m1)/(m1 + m2) + v1[EIXO_X] * 2 * m1/(m1 + m2), v2[EIXO_Y]], -theta);
+
+      this.vx = u1[EIXO_X];
+      this.vy = u1[EIXO_Y];
+      other.vx = u2[EIXO_X];
+      other.vy = u2[EIXO_Y];
+  }
     this.mover()
     return true;
   }
