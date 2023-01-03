@@ -47,8 +47,8 @@ class Particula {
     ];
 
     if (res[EIXO_X] *(other.posicao[EIXO_X] - this.posicao[EIXO_X]) + res[EIXO_Y] * (other.posicao[EIXO_Y] - this.posicao[EIXO_Y]) >= EIXO_X ) {
-      this.color = [aleatorio(255, 128), aleatorio(255, 128), aleatorio(255, 128)];
-      other.color = [aleatorio(255, 128), aleatorio(255, 128), aleatorio(255, 128)];
+      this.cor = [aleatorio(255, 128), aleatorio(255, 128), aleatorio(255, 128)];
+      other.cor = [aleatorio(255, 128), aleatorio(255, 128), aleatorio(255, 128)];
       var m1 = this.massa
       var m2 = other.massa
       var theta = -Math.atan2(other.posicao[EIXO_Y] - this.posicao[EIXO_Y], other.posicao[EIXO_X] - this.posicao[EIXO_X]);

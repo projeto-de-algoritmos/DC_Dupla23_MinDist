@@ -1,45 +1,25 @@
-**!! Atenção: Renomeie o seu repositório para (Tema)_(NomeDoProjeto). !!** 
+# Particulas Malucas
 
-Temas:
- - Grafos1
- - Grafos2
- - PD
- - D&C
- - Greed
- - Final 
- 
- **!! *Não coloque os nomes dos alunos no título do repositório*. Exemplo de título correto: Grafos2_Labirinto-do-Minotauro !!**
- 
- (Apague essa seção)
-
-# NomedoProjeto
-
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: XXXXXXXXXX<br>
+**Número da Lista**: 23<br>
+**Conteúdo da Disciplina**: Divide & Conquer <br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 18/0105256  |  [Lucas da Cunha Andrade](https://github.com/nYCSTs) |
+| 18/0027352  |  [Rodrigo Carvalho dos Santos](https://github.com/Rocsantos) |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+Um simples projeto que utiliza do Algoritmo de Dividir e Conquistar para criar colisão de particulas do canvas.
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Linguagem**: Javascript puro<br>
+**Framework**: Nenhuma<br>
+
+Possuir um navegador, baixar este repositório e abrir o arquivo `index.html` no diretório `app`
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
-
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
-
-
+Você pode baixar o repositório, ou acessar a página da aplicação [aqui](https://projeto-de-algoritmos.github.io/DC_Dupla23_MinDist/app/).
