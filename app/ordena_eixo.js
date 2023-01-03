@@ -1,5 +1,5 @@
 function eixo_x (a, b){
-  return a.posicao[EIXO_X] - b.posicao[EIXO_X];
+  return a - b;
 }
 
 function eixo_y (a, b) {
